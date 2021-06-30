@@ -162,7 +162,7 @@ public struct TickLabel {
         context.setLineWidth(strokeWidth)
         
         // draw background
-        context.fillEllipse(in: rectangle)
+        context.fill(rect)
         
         // draw outline
         context.strokeEllipse(in: rectangle)
