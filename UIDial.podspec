@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'UIDial'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of UIDial.'
+  s.summary          = 'A UI Dial.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,10 +25,10 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Thomas Harrison' => 'twh2898@vt.edu' }
-  s.source           = { :git => 'https://github.com/Thomas Harrison/UIDial.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/twh2898/UIDial.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'UIDial/Classes/**/*'
   
