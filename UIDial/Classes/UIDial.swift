@@ -7,11 +7,11 @@
 
 import UIKit
 
-class DecimalDial: UIDial {
+open class DecimalDial: UIDial {
     
-    override var absZeroValue: Double { 25 }
+    override open var absZeroValue: Double { 25 }
     
-    override var ticks: [Tick] {
+    override open var ticks: [Tick] {
         [
             Tick(n: 10, length: 0.2),
             Tick(n: 20, length: 0.15),
@@ -19,24 +19,24 @@ class DecimalDial: UIDial {
         ]
     }
     
-    override var tickLabels: [TickLabel] {
+    override open var tickLabels: [TickLabel] {
         (0...9).map { i in
             TickLabel(value: Double(i * 10), text: String(format: "%d", i * 10))
         }
     }
     
-    override func angle(for value: Double) -> Double {
+    override open func angle(for value: Double) -> Double {
         value * Double.pi * 2 / 100
     }
     
-    override func angleText(for value: Double) -> String {
+    override open func angleText(for value: Double) -> String {
         String(format: "%d", Int(value))
     }
 }
 
-class DegreesDial: UIDial {
+open class DegreesDial: UIDial {
     
-    override var ticks: [Tick] {
+    override open var ticks: [Tick] {
         [
             Tick(n: 4, length: 0.2),
             Tick(n: 36, length: 0.15),
@@ -44,7 +44,7 @@ class DegreesDial: UIDial {
         ]
     }
     
-    override var tickLabels: [TickLabel] {
+    override open var tickLabels: [TickLabel] {
         [
             TickLabel(value: 0, text: "0"),
             TickLabel(value: 90, text: "90"),
@@ -53,18 +53,18 @@ class DegreesDial: UIDial {
         ]
     }
     
-    override func angle(for value: Double) -> Double {
+    override open func angle(for value: Double) -> Double {
         -value * Double.pi * 2 / 360
     }
     
-    override func angleText(for value: Double) -> String {
+    override open func angleText(for value: Double) -> String {
         String(format: "%d°", Int(value))
     }
 }
 
-class RadiansDial: UIDial {
+open class RadiansDial: UIDial {
     
-    override var ticks: [Tick] {
+    override open var ticks: [Tick] {
         [
             Tick(n: 4, length: 0.2),  // 90°
             Tick(n: 8, length: 0.15),
@@ -72,7 +72,7 @@ class RadiansDial: UIDial {
         ]
     }
     
-    override var tickLabels: [TickLabel] {
+    override open var tickLabels: [TickLabel] {
         [
             TickLabel(value: 0, text: "0"),
             TickLabel(value: Double.pi / 2, text: "π/2"),
@@ -82,58 +82,58 @@ class RadiansDial: UIDial {
     }
 }
 
-struct Tick {
+public struct Tick {
     var n: Int
     var length: Double
 }
 
-struct TickLabel {
+public struct TickLabel {
     var value: Double
     var text: String
     var radius: Double = 0.6
 }
 
-@IBDesignable class UIDial: UIView {
+@IBDesignable open class UIDial: UIView {
     
-    @IBInspectable var label: String = "Label" { didSet { setNeedsDisplay() } }
-    @IBInspectable var value: Double = 0.0 { didSet { setNeedsDisplay() } }
+    @IBInspectable open var label: String = "Label" { didSet { setNeedsDisplay() } }
+    @IBInspectable open var value: Double = 0.0 { didSet { setNeedsDisplay() } }
     
-    @IBInspectable var centerSize: Double = 2.0
-    @IBInspectable var strokeWidth: CGFloat = 1
-    @IBInspectable var fillColor: UIColor = UIColor.systemBackground
-    @IBInspectable var strokeColor: UIColor = UIColor.systemGray2
-    @IBInspectable var labelColor: UIColor = UIColor.secondaryLabel
-    @IBInspectable var labelFont: UIFont = UIFont.systemFont(ofSize: 12.0)
+    @IBInspectable open var centerSize: Double = 2.0
+    @IBInspectable open var strokeWidth: CGFloat = 1
+    @IBInspectable open var fillColor: UIColor = UIColor.systemBackground
+    @IBInspectable open var strokeColor: UIColor = UIColor.systemGray2
+    @IBInspectable open var labelColor: UIColor = UIColor.secondaryLabel
+    @IBInspectable open var labelFont: UIFont = UIFont.systemFont(ofSize: 12.0)
     
-    var absZeroValue: Double { 0 }
+    open var absZeroValue: Double { 0 }
     
-    var ticks: [Tick] {
+    open var ticks: [Tick] {
         [
             Tick(n: 4, length: 0.2),
         ]
     }
     
-    var tickLabels: [TickLabel] {
+    open var tickLabels: [TickLabel] {
         [
             TickLabel(value: 0, text: "0"),
         ]
     }
     
-    var zeroAngle: Double { angle(for: absZeroValue) }
+    open var zeroAngle: Double { angle(for: absZeroValue) }
     
-    func angle(for value: Double) -> Double {
+    open func angle(for value: Double) -> Double {
         -value // CCW
     }
     
-    func angleText(for value: Double) -> String {
+    open func angleText(for value: Double) -> String {
         String(format: "%.3f", value)
     }
     
-    override var intrinsicContentSize: CGSize {
+    override open var intrinsicContentSize: CGSize {
         return CGSize(width: 128, height: 128)
     }
     
-    override func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
         let rectangle = bounds.insetBy(dx: strokeWidth / 2,
                                        dy: strokeWidth / 2)
