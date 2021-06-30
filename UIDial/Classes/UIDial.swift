@@ -85,12 +85,23 @@ open class RadiansDial: UIDial {
 public struct Tick {
     public var n: Int
     public var length: Double
+    
+    public init(n: Int, length: Double) {
+        self.n = n
+        self.length = length
+    }
 }
 
 public struct TickLabel {
     public var value: Double
     public var text: String
-    public var radius: Double = 0.6
+    public var radius: Double
+    
+    public init(value: Double, text: String, radius: Double = 0.6) {
+        self.value = value
+        self.text = text
+        self.radius = radius
+    }
 }
 
 @IBDesignable open class UIDial: UIView {
