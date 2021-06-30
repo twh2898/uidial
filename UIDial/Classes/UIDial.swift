@@ -130,6 +130,14 @@ public struct TickLabel {
         ]
     }
     
+    open var needleColor: UIColor {
+        if Int(value) == 0 {
+            return UIColor.systemGreen
+        } else {
+            return UIColor.systemRed
+        }
+    }
+    
     open var zeroAngle: Double { angle(for: absZeroValue) }
     
     open func angle(for value: Double) -> Double {
@@ -260,11 +268,7 @@ public struct TickLabel {
         }
         
         // draw indicator line
-        if value == 0 {
-            context.setStrokeColor(UIColor.systemGreen.cgColor)
-        } else {
-            context.setStrokeColor(UIColor.systemRed.cgColor)
-        }
+        context.setStrokeColor(needleColor.cgColor)
         drawLine(angle: angle(for: value) - zeroAngle, length: 1.0)
         
         // draw center dot
