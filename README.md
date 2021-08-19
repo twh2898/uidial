@@ -8,11 +8,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-UIDial is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Add the following line to your Podfile:
 
 ```ruby
-pod 'UIDial'
+pod 'UIDial', :git => 'https://github.com/twh2898/UIDial'
 ```
 
 ## Author
